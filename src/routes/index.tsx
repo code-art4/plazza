@@ -3,6 +3,7 @@ import Login from '../pages/Login';
 import Signup from '../pages/Signup';
 import Description from '../pages/Description';
 import LandingPage from '../pages';
+import AuthenticatedLayout from '../layout/AuthenticatedLayout';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -10,6 +11,7 @@ enum RoutePaths {
   Signup = '/signup',
   Description = '/description',
   LandingPage = '/',
+  Authenticated = '/authenticated',
 }
 
 const PageRoutes = () => {
@@ -20,6 +22,10 @@ const PageRoutes = () => {
         <Route path={RoutePaths.Login} element={<Login />} />
         <Route path={RoutePaths.Signup} element={<Signup />} />
         <Route path={RoutePaths.Description} element={<Description />} />
+        <Route
+          path={RoutePaths.Authenticated}
+          element={<AuthenticatedLayout />}
+        />
       </Routes>
     </>
   );
