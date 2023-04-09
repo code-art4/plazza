@@ -3,7 +3,7 @@
 }
 
 .delivery-icon {
-  @apply flex items-center gap-x-2 mr-7;
+  @apply flex items-center gap-x-2 mr-1;
 }
 
 .right-nav {

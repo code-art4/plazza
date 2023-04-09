@@ -40,7 +40,7 @@ const ProductDetails = () => {
       </div>
       <div className='mt-5'>
         <h4 className='font-semibold text-xl'>Description</h4>
-        <ul className='font-medium'>
+        <ul className='font-medium mt-1'>
           <li>Overall Dimensions: 29.5”W x 27.6”D x 42.9”H</li>
           <li>Seat Height: 17.7” (450mm)</li>
           <li>Weight Capacity: 331 lb./150kg</li>
