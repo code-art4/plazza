@@ -1,0 +1,11 @@
+.input {
+  @apply relative border border-grey rounded-lg overflow-hidden w-full flex bg-none;
+}
+
+.input input {
+  @apply w-full rounded-lg placeholder-grey px-6 outline-none py-3.5;
+}
+
+.input .password-container {
+  @apply absolute right-5 top-[50%] translate-y-[-50%];
+}

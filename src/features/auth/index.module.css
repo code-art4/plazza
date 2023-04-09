@@ -1,0 +1,11 @@
+.container {
+  @apply min-h-screen w-screen flex justify-between;
+}
+
+.container .first-container {
+  @apply w-[50%] bg-blue;
+}
+
+.container .main-container {
+  @apply w-[50%] px-24 py-20 self-center;
+}

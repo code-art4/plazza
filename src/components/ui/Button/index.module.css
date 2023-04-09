@@ -1,0 +1,11 @@
+.button {
+  @apply w-full items-center py-4 rounded-xl;
+}
+
+.primary {
+  @apply bg-green text-white;
+}
+
+.secondary {
+  @apply bg-white text-green border border-green;
+}
