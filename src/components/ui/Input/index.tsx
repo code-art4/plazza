@@ -7,13 +7,14 @@ interface InputProps {
   id: string;
   name: string;
   type?: string;
+  className?: string;
 }
 
-const Input = ({ placeholder, id, name, type }: InputProps) => {
+const Input = ({ placeholder, id, name, type, className }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
-    <div className={styles.input}>
+    <div className={`${styles.input}`}>
       <input
         type={
           (type === 'password' && showPassword ? type : 'text') ||
@@ -22,7 +23,7 @@ const Input = ({ placeholder, id, name, type }: InputProps) => {
         }
         id={id}
         name={name}
-        // className={styles.input}
+        className={className}
         placeholder={placeholder}
         required
       />

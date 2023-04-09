@@ -1,10 +1,9 @@
-import Select, { StylesConfig } from 'react-select';
+import Select from 'react-select';
 
 const SignupSelect = () => {
   const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
+    { value: 'User', label: 'User' },
+    { value: 'Vendor', label: 'Vendor' },
   ];
 
   const customStyles = {
