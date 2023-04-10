@@ -5,6 +5,7 @@ import Description from '../pages/Description';
 import LandingPage from '../pages';
 import AuthenticatedLayout from '../layout/AuthenticatedLayout';
 import CustomerProfile from './../pages/Profile/Customer';
+import VendorProfile from '../pages/Profile/User';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -14,6 +15,7 @@ enum RoutePaths {
   LandingPage = '/',
   Authenticated = '/authenticated',
   CustomerProfile = '/profile',
+  VendorProfile = '/vendor/profile',
 }
 
 const PageRoutes = () => {
@@ -32,6 +34,7 @@ const PageRoutes = () => {
           path={RoutePaths.CustomerProfile}
           element={<CustomerProfile />}
         />
+        <Route path={RoutePaths.VendorProfile} element={<VendorProfile />} />
       </Routes>
     </>
   );

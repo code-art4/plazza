@@ -12,7 +12,7 @@ const Nav = () => {
   const [openSearch, setOpenSearch] = useState<boolean>(false);
 
   return (
-    <nav className='flex items-center px-32 pt-7'>
+    <nav className='fixed top-0 bg-white flex items-center px-32 pt-7 w-full'>
       <div className='w-20 h-12 bg-[#D9D9D9]'></div>
       <div className='ml-auto w-max flex items-center gap-x-3 mr-[12rem]'>
         {openSearch ? (
@@ -38,7 +38,7 @@ const Nav = () => {
         <AiOutlineMore size='1.3rem' />
       </div>
 
-      <div className='flex items-center gap-x-4'>
+      <div className='flex items-center gap-x-4 mr-32'>
         <img src={NigeriaSVG} />
         <img src={ChatSVG} />
         <img src={NotificationSVG} />

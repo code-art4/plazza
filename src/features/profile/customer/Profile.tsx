@@ -45,7 +45,7 @@ const Profile = () => {
               <p className='text-[#888888]'>Manufacturer</p>
               <div className='mt-2 flex flex-col gap-y-1'>
                 <p>Spotlighting athlete</p>
-                <p>#BlackLivesMatter and #StopAsianHate linkin.bio/nike</p>
+                <p>#BlackLivesMatter and #StopAsianHate</p>
                 <p className='text-green'>linkin.bio/nike</p>
               </div>
               <p className='flex items-center gap-x-2 mt-3'>
