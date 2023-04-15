@@ -29,15 +29,15 @@ const LandingPage = () => {
           <img src={LandingPageImg} className='object-cover w-full h-auto' />
         </div>
 
-        <div className='flex justify-between mt-12 px-12'>
-          <div className='flex flex-col gap-y-[5rem] w-[40%]'>
+        <div className='flex gap-x-12 justify-between mt-12 px-12'>
+          <div className='flex flex-col gap-y-[5rem] w-1/2'>
             {Array(6)
               .fill('1')
               .map((_, i) => (
                 <Card />
               ))}
           </div>
-          <div className='w-[35%]'>
+          <div className='w-1/2'>
             <div>
               <img src={Ad1} className='w-full object-cover h-auto' />
             </div>

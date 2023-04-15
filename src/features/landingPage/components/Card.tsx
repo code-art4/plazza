@@ -10,6 +10,7 @@ import Navigate from '../../../assets/navigate.svg';
 
 const Card = () => {
   const navigate = useNavigate();
+
   return (
     <div className='w-full'>
       <div className='flex items-center justify-between mb-3'>
