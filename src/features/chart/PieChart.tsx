@@ -4,23 +4,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
-export const options = {
-  plugins: {
-    title: {
-      display: false,
-      text: 'Chart.js Doughnut Chart',
-    },
-     tooltip: {
-      position: 'bottom',
-    },
-  },
-  responsive: true,
-  // Reverse legend order
-   legend: {
-    display: false,
-  },
-};
-
 export const data = {
   labels: ['Delivered', 'Pending', 'Cancelled'],
   datasets: [
@@ -43,5 +26,5 @@ export const data = {
 };
 
 export default function App() {
-  return <Doughnut options={options} data={data} />;
+  return <Doughnut data={data} />;
 }
