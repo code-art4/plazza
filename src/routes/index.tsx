@@ -8,6 +8,8 @@ import CustomerProfile from './../pages/Profile/Customer';
 import VendorProfile from '../pages/Profile/User';
 import VideoCall from '../pages/Call/video';
 import AudioCall from './../pages/Call/audio';
+import Chat from '../pages/Chat';
+import Dashboard from '../pages/Dashboard';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -20,6 +22,8 @@ enum RoutePaths {
   VendorProfile = '/vendor/profile',
   VideoCall = '/call/video',
   AudioCall = 'call',
+  Chat = '/chat',
+  Dashboard = '/dashboard',
 }
 
 const PageRoutes = () => {
@@ -41,6 +45,8 @@ const PageRoutes = () => {
         <Route path={RoutePaths.VendorProfile} element={<VendorProfile />} />
         <Route path={RoutePaths.VideoCall} element={<VideoCall />} />
         <Route path={RoutePaths.AudioCall} element={<AudioCall />} />
+        <Route path={RoutePaths.Chat} element={<Chat />} />
+        <Route path={RoutePaths.Dashboard} element={<Dashboard />} />
       </Routes>
     </>
   );

@@ -17,10 +17,14 @@ import Help from '../assets/help-center.svg';
 import LogOut from '../assets/logout.svg';
 
 interface AuthenticatedLayoutProps {
+  topBar?: boolean;
   children?: React.ReactNode;
 }
 
-const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
+const AuthenticatedLayout = ({
+  children,
+  topBar,
+}: AuthenticatedLayoutProps) => {
   return (
     <div>
       <div className='fixed flex flex-col h-screen left-0 top-0 w-[20%] py-12 px-12 shadow'>
@@ -76,31 +80,33 @@ const AuthenticatedLayout = ({ children }: AuthenticatedLayoutProps) => {
           </ul>
         </div>
       </div>
-      <div className='py-8 fixed top-0 right-0 w-[80%] ml-auto shadow px-10 flex items-center'>
-        <h3 className='text-xl font-semibold text-green'>Welcome Dan!</h3>
-        <div className='mx-auto flex items-center gap-x-3'>
-          <Input
-            placeholder='Search'
-            type='search'
-            id='search'
-            name='search'
-            className='!py-2.5 !w-[30rem]'
-          />
-          <Button className='w-max h-max px-6 py-3'>Search</Button>
-        </div>
+      {topBar ? (
+        <div className='py-8 fixed top-0 right-0 w-[80%] ml-auto shadow px-10 flex items-center z-[2] bg-white'>
+          <h3 className='text-xl font-semibold text-green'>Welcome Dan!</h3>
+          <div className='mx-auto flex items-center gap-x-3'>
+            <Input
+              placeholder='Search'
+              type='search'
+              id='search'
+              name='search'
+              className='!py-2.5 !w-[30rem]'
+            />
+            <Button className='w-max h-max px-6 py-3'>Search</Button>
+          </div>
 
-        <div className='flex items-center gap-x-4 ml-auto'>
-          <img src={NigeriaSVG} className='' />
-          <img src={ChatSVG} className='' />
-          <img src={NotificationSVG} className='' />
-          <img src={HelpSVG} className='' />
-          <div className='flex items-center'>
-            <img src={Profile} className='w-8 h-8' />
-            <RxCaretDown size='1rem' />
+          <div className='flex items-center gap-x-4 ml-auto'>
+            <img src={NigeriaSVG} className='' />
+            <img src={ChatSVG} className='' />
+            <img src={NotificationSVG} className='' />
+            <img src={HelpSVG} className='' />
+            <div className='flex items-center'>
+              <img src={Profile} className='w-8 h-8' />
+              <RxCaretDown size='1rem' />
+            </div>
           </div>
         </div>
-      </div>
-      <div>{children}</div>
+      ) : null}
+      <div className='w-[80%] ml-auto py-8 overflow-hidden z-[1]'>{children}</div>
     </div>
   );
 };
