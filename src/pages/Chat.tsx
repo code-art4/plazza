@@ -145,13 +145,10 @@ const ChatPage = () => {
         <div className='w-[60%] relative max-h-screen mr-4 -mt-5'>
           <TopNav />
           <Chat />
-          <ChatBox
-            className='right-[16rem] w-[35rem]'
-            inputClassName='w-[25rem]'
-          />
+          <ChatBox            />
         </div>
 
-        <div className='w-[20%] ml-auto mt-16'>
+        {/* <div className='w-[20%] ml-auto mt-16'>
           <div className='flex flex-col items-center -ml-[4rem] mb-7'>
             <div className='flex mx-auto items-center w-max mb-5'>
               <img src={UserProfile} className='-mr-8 scale-[120%] z-[1]' />
@@ -248,7 +245,7 @@ const ChatPage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </AuthenticatedLayout>
   );
