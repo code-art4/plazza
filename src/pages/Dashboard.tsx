@@ -105,7 +105,7 @@ const customStyles = {
             paddingLeft: '8px', // override the cell padding for head cells
             paddingRight: '8px',
             color: 'green',
-            fontSize: '16px',
+            fontSize: '15px',
             fontWeight: '500'
         },
     },
@@ -198,7 +198,7 @@ const Dashboard = () => {
         </div>
 
         <div className='mt-12'>
-          <p className='font-semibold text-grey mb-1'>Recent Orders</p>
+          <p className='font-semibold text-grey mb-2'>Recent Orders</p>
           <Table data={data} columns={columns} customStyles={customStyles}/>
           </div>
       </div>
