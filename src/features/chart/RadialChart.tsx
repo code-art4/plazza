@@ -13,7 +13,7 @@ export default class RadialChart extends Component<IProps, IState> {
   constructor(props: IProps) {
     super(props);
     this.state = {
-      series: [90],
+      series: [90, 50, 80],
       options: {
         colors: ['#16962B', '#B9F1C2', '#FF3E3E'],
         chart: {
