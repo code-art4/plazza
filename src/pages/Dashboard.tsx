@@ -6,7 +6,14 @@ import GreenChart from '../assets/image/green-chart.png';
 import RedChart from '../assets/image/red-chart.png';
 import BarChart from '../features/chart/BarChart';
 import PieChart from '../features/chart/PieChart';
-import Table from '../features/Table';
+import Table from '../components/ui/Table';
+import ColumnChart from '../features/chart/ColumnChart';
+import RadialChart from '../features/chart/RadialChart';
+import BarChart2 from '../features/chart/BarChart2';
+import BarChart1 from '../features/chart/BarChart1';
+import BarChart3 from '../features/chart/BarChart3';
+import BarChart4 from '../features/chart/BarChart4';
+//import Table from '../features/Table';
 
 const columns = [
   {
@@ -78,7 +85,7 @@ const data = [
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
     amount: '$875',
-    status: 'Delivered',
+    status: 'Pending',
   },
   {
     id: '#719261',
@@ -90,7 +97,7 @@ const data = [
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
     amount: '$875',
-    status: 'Delivered',
+    status: 'Cancelled',
   },
 ];
 
@@ -130,7 +137,9 @@ const Dashboard = () => {
             <div>
               <div className='flex items-center'>
                 <p className='font-semibold text-lg mt-1.5 mr-4'>$450K</p>
-                <img src={GreenChart} className='w-32 h-20' />
+                <div className='w-24 h-20'>
+                  <BarChart1 />
+                </div>
               </div>
 
               <div className='mt-6 flex items-center gap-x-1'>
@@ -146,7 +155,9 @@ const Dashboard = () => {
             <div>
               <div className='flex items-center'>
                 <p className='font-semibold text-lg mt-1.5 mr-4'>1500</p>
-                <img src={GreenChart} className='w-32 h-20' />
+                <div className='w-24 h-20'>
+                  <BarChart2  />
+                </div>
               </div>
               <div className='mt-6 flex items-center gap-x-1'>
                 <BiCaretUp color='green' />
@@ -161,7 +172,9 @@ const Dashboard = () => {
             <div>
               <div className='flex items-center'>
                 <p className='font-semibold text-lg mt-1.5 mr-4'>2.00M</p>
-                <img src={RedChart} className='w-32 h-20 oject-cover' />
+                <div className='w-24 h-20'>
+                  <BarChart3 />
+                </div>
               </div>
               <div className='mt-6 flex items-center gap-x-1'>
                 <BiCaretUp color='red' />
@@ -176,7 +189,9 @@ const Dashboard = () => {
             <div>
               <div className='flex items-center'>
                 <p className='font-semibold text-lg mt-1.5 mr-4'>20.48%</p>
-                <img src={GreenChart} className='w-32 h-20' />
+                <div className='w-24 h-20'>
+                  <BarChart4 />
+                </div>
               </div>
               <div>
                 <BiCaretUp color='green' />
@@ -189,16 +204,23 @@ const Dashboard = () => {
 
         <div className='flex items-center mt-10'>
           <div className='w-1/2'>
-            <BarChart />
+            <ColumnChart />
           </div>
           <div className='w-[30%] px-5 mx-auto'>
-            <PieChart />
+            <RadialChart />
           </div>
         </div>
 
         <div className='mt-12'>
           <p className='font-semibold text-grey mb-2'>Recent Orders</p>
-          <Table data={data} columns={columns} customStyles={customStyles} />
+          {/* <Table data={data} columns={columns} customStyles={customStyles} /> */}
+          <Table
+            pageSize={10}
+            data={data}
+            columns={columns}
+            columnColor={'text-[#16962B]'}
+            pagination={true}
+          />
         </div>
       </div>
     </AuthenticatedLayout>
