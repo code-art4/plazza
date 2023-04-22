@@ -1,14 +1,14 @@
 import Status from '../status';
 
 interface TableProps {
-  title: string;
+  title?: string;
   data: any;
 }
 
 const Table = ({ title, data }: TableProps) => {
   return (
     <div>
-      <h3 className='font-semibold text-grey mb-2'>{title}</h3>
+      {title ? <h3 className='font-semibold text-grey mb-2'>{title}</h3> : null}
       <table className='border-collapse'>
         <tbody>
           {data.map((item: any, index: number) => {
