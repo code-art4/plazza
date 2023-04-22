@@ -10,7 +10,6 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
-    "@react-google-maps/api": "^2.18.1",
     "@tanstack/react-table": "^8.8.5",
     "apexcharts": "^3.38.0",
     "chart.js": "^4.2.1",
@@ -24,7 +23,6 @@
     "react-charts": "^3.0.0-beta.54",
     "react-data-table-component": "^7.5.3",
     "react-dom": "^18.2.0",
-    "react-google-maps": "^9.4.5",
     "react-icons": "^4.8.0",
     "react-leaflet": "^4.2.1",
     "react-modern-audio-player": "^1.4.0-rc.2",
