@@ -1,7 +1,7 @@
 import Order1 from '../assets/image/order-1.png';
 import { Button } from '../components/ui';
 import { RxDownload } from 'react-icons/rx';
-import FeaturesTable from '../features/table';
+import FeaturesTable from '../features/Table';
 
 const columns = [
   {

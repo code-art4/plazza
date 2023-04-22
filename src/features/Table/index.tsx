@@ -1,4 +1,4 @@
-import Table from './../../components/ui/Table/Table2';
+import Table from '../../components/ui/Table/Table2';
 import AuthenticatedLayout from '../../layout/AuthenticatedLayout';
 import { Button } from '../../components/ui';
 import { RxCaretDown } from 'react-icons/rx';

@@ -1,9 +1,5 @@
-import Table from './../components/ui/Table/Table2';
 import Order1 from '../assets/image/order-1.png';
-import AuthenticatedLayout from '../layout/AuthenticatedLayout';
-import { Button } from '../components/ui';
-import { RxCaretDown } from 'react-icons/rx';
-import FeaturesTable from '../features/table';
+import FeaturesTable from '../features/Table';
 
 const columns = [
   {
