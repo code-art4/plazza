@@ -21,7 +21,7 @@ const FeaturesTable = ({
   return (
     <AuthenticatedLayout topBar={true} className='pt-7 bg-[#2C2C2C]/[4%] h-max'>
       <div className='flex items-center justify-between mb-5 px-7 mt-8'>
-        <h2 className='text-xl font-bold'>{title}</h2>
+        <h1 className='text-2xl font-semibold'>{title}</h1>
         <div className='flex gap-x-3'>
           <Button
             className='flex items-center w-max px-5 gap-x-2 bg-[transparent] py-3'
