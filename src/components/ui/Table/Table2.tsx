@@ -1,5 +1,6 @@
 import React from 'react';
 import Pagination from './Pagination';
+import Status from './../../../features/status/index';
 
 interface TableProps {
   columns: any;
@@ -77,15 +78,10 @@ const Table = ({
                         }
                       )}
                       <td
-                        className={`rounded-[8px] max-w-min text-sm ${
-                          status === 'Delivered'
-                            ? 'text-[#16962B]'
-                            : status === 'Pending'
-                            ? 'text-[#B9F1C2]'
-                            : 'text-[#FF3E3E]'
-                        } pr-6 py-2 my-2`}
+                        className={`rounded-[8px] max-w-min text-sm
+                          pr-6 py-2 my-2`}
                       >
-                        {status}
+                        {Status(status)}
                       </td>
                       <td className='pr-6 py-3 text-green underline'>
                         View details

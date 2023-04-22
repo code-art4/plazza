@@ -109,7 +109,7 @@ const AuthenticatedLayout = ({
         </div>
       ) : null}
       <div
-        className={`w-[80%] ml-auto py-8 overflow-hidden z-[1] ${
+        className={`w-[80%] ml-auto py-8 overflow-hidden z-[1] min-h-[calc(100vh-11vh)] ${
           topBar ? 'mt-20' : ''
         } ${className}`}
       >
