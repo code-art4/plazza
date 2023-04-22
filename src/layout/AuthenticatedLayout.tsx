@@ -83,7 +83,7 @@ const AuthenticatedLayout = ({
         </div>
       </div>
       {topBar ? (
-        <div className='py-8 fixed top-0 right-0 w-[80%] ml-auto shadow px-10 flex items-center z-[2] bg-white'>
+        <div className='py-8 fixed top-0 right-0 w-[80%] ml-auto shadow px-10 flex items-center z-[9999] bg-white'>
           <h3 className='text-xl font-semibold text-green'>Welcome Dan!</h3>
           <div className='mx-auto flex items-center gap-x-3'>
             <Input

@@ -17,6 +17,8 @@ import Refund from '../pages/Refund';
 import Transaction from '../pages/Transaction';
 import Booking from '../pages/Booking';
 import Details from '../pages/Order/Details';
+import Tracking from '../pages/Order/Tracking';
+import Refunds from '../pages/Refunds';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -32,12 +34,14 @@ enum RoutePaths {
   Chat = '/chat',
   Dashboard = '/dashboard',
   Order = '/order',
+  Details = '/order/details',
   Shipment = '/shipment',
   Invoice = '/invoice',
   Refund = '/refund',
+  Refunds = '/refund/:id',
   Transaction = '/transaction',
   Booking = '/booking',
-  Details = '/order/details',
+  Tracking = '/track',
 }
 
 const PageRoutes = () => {
@@ -68,6 +72,8 @@ const PageRoutes = () => {
         <Route path={RoutePaths.Transaction} element={<Transaction />} />
         <Route path={RoutePaths.Booking} element={<Booking />} />
         <Route path={RoutePaths.Details} element={<Details />} />
+        <Route path={RoutePaths.Tracking} element={<Tracking />} />
+        <Route path={RoutePaths.Refunds} element={<Refunds />} />
       </Routes>
     </>
   );
