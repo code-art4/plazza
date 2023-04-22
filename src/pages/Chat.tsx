@@ -132,8 +132,9 @@ const ChatPage = () => {
           </header>
           <main className='mt-4'>
             <div>
-              {chatsList.map((chat) => (
+              {chatsList.map((chat: any, index: number) => (
                 <ChatProfile
+                  key={index}
                   active={chat.id === activeChat.id}
                   activeChat={chat}
                   onClick={() => setActiveChat(chat)}
@@ -145,7 +146,7 @@ const ChatPage = () => {
         <div className='w-[60%] relative max-h-screen mr-4 -mt-5'>
           <TopNav />
           <Chat />
-          <ChatBox            />
+          <ChatBox />
         </div>
 
         {/* <div className='w-[20%] ml-auto mt-16'>

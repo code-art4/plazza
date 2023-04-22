@@ -1,6 +1,5 @@
 import React from 'react';
 import Pagination from '../../components/ui/Table/Pagination';
-import Status from './../../features/status/index';
 
 interface TableProps {
   columns: any;
@@ -57,30 +56,13 @@ const Table = ({
                     >
                       {Object.entries(cell).map(
                         ([key, value]: [key: string, value: any]) => {
-                          return key === 'refundAmount' ? null : key ===
-                            'status' ? (
-                            <td
-                              className={`rounded-[8px] max-w-min text-sm
-                          pr-6 py-2 my-2`}
-                              key={key}
-                            >
-                              {Status({ status: value })}
-                            </td>
-                          ) : (
+                          return (
                             <td className='pr-6 py-3' key={key}>
                               {value}
                             </td>
                           );
                         }
                       )}
-                      <td className='pr-6 py-3 text-green underline'>
-                        <input
-                          type='text'
-                          className='border border-green rounded-lg text-grey placeholder:text-grey py-3 px-4 outline-none'
-                          readOnly={true}
-                          defaultValue={cell.refundAmount}
-                        />
-                      </td>
                     </tr>
                   );
                 })}
