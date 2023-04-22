@@ -54,9 +54,7 @@ const data = [
   {
     id: '#719261',
     date: '13 Apr 2022',
-    customer: {
-      name: 'Cameron Easton',
-    },
+    customer: 'Cameron Easton',
     location: 'Lagos, Nigeria',
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
@@ -66,9 +64,7 @@ const data = [
   {
     id: '#719261',
     date: '13 Apr 2022',
-    customer: {
-      name: 'Cameron Easton',
-    },
+    customer: 'Cameron Easton',
     location: 'Lagos, Nigeria',
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
@@ -78,9 +74,7 @@ const data = [
   {
     id: '#719261',
     date: '13 Apr 2022',
-    customer: {
-      name: 'Cameron Easton',
-    },
+    customer: 'Cameron Easton',
     location: 'Lagos, Nigeria',
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
@@ -90,9 +84,7 @@ const data = [
   {
     id: '#719261',
     date: '13 Apr 2022',
-    customer: {
-      name: 'Cameron Easton',
-    },
+    customer: 'Cameron Easton',
     location: 'Lagos, Nigeria',
     tracking: 'GUHYIF12',
     item: 'Macbook Pro',
@@ -128,7 +120,7 @@ const customStyles = {
 const Dashboard = () => {
   return (
     <AuthenticatedLayout topBar={true}>
-      <div className='px-6 mt-28'>
+      <div className='px-6'>
         <h2 className='text-xl font-medium mb-4'>Overview</h2>
 
         <div className='flex items-center justify-between gap-x-10'>
@@ -156,7 +148,7 @@ const Dashboard = () => {
               <div className='flex items-center'>
                 <p className='font-semibold text-lg mt-1.5 mr-4'>1500</p>
                 <div className='w-24 h-20'>
-                  <BarChart2  />
+                  <BarChart2 />
                 </div>
               </div>
               <div className='mt-6 flex items-center gap-x-1'>

@@ -10,6 +10,12 @@ import VideoCall from '../pages/Call/video';
 import AudioCall from './../pages/Call/audio';
 import Chat from '../pages/Chat';
 import Dashboard from '../pages/Dashboard';
+import Order from '../pages/Order';
+import Shipment from '../pages/Shipment';
+import Invoice from '../pages/Invoice';
+import Refund from '../pages/Refund';
+import Transaction from '../pages/Transaction';
+import Booking from '../pages/Booking';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -24,6 +30,12 @@ enum RoutePaths {
   AudioCall = 'call',
   Chat = '/chat',
   Dashboard = '/dashboard',
+  Order = '/order',
+  Shipment = '/shipment',
+  Invoice = '/invoice',
+  Refund = '/refund',
+  Transaction = '/transaction',
+  Booking = '/booking',
 }
 
 const PageRoutes = () => {
@@ -47,6 +59,12 @@ const PageRoutes = () => {
         <Route path={RoutePaths.AudioCall} element={<AudioCall />} />
         <Route path={RoutePaths.Chat} element={<Chat />} />
         <Route path={RoutePaths.Dashboard} element={<Dashboard />} />
+        <Route path={RoutePaths.Order} element={<Order />} />
+        <Route path={RoutePaths.Shipment} element={<Shipment />} />
+        <Route path={RoutePaths.Invoice} element={<Invoice />} />
+        <Route path={RoutePaths.Refund} element={<Refund />} />
+        <Route path={RoutePaths.Transaction} element={<Transaction />} />
+        <Route path={RoutePaths.Booking} element={<Booking />} />
       </Routes>
     </>
   );

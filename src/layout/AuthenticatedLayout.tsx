@@ -19,11 +19,13 @@ import LogOut from '../assets/logout.svg';
 interface AuthenticatedLayoutProps {
   topBar?: boolean;
   children?: React.ReactNode;
+  className?: string;
 }
 
 const AuthenticatedLayout = ({
   children,
   topBar,
+  className,
 }: AuthenticatedLayoutProps) => {
   return (
     <div>
@@ -106,7 +108,13 @@ const AuthenticatedLayout = ({
           </div>
         </div>
       ) : null}
-      <div className='w-[80%] ml-auto py-8 overflow-hidden z-[1]'>{children}</div>
+      <div
+        className={`w-[80%] ml-auto py-8 overflow-hidden z-[1] ${
+          topBar ? 'mt-20' : ''
+        } ${className}`}
+      >
+        {children}
+      </div>
     </div>
   );
 };
