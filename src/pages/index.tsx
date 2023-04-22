@@ -34,7 +34,7 @@ const LandingPage = () => {
             {Array(6)
               .fill('1')
               .map((_, i) => (
-                <Card />
+                <Card key={i} />
               ))}
           </div>
           <div className='w-1/2'>

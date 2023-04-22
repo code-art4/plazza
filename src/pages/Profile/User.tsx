@@ -16,7 +16,7 @@ const VendorProfile = () => {
             {Array(5)
               .fill(1)
               .map((_, i) => (
-                <Card />
+                <Card key={i} />
               ))}
           </div>
         </div>
