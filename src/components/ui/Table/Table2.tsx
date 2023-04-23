@@ -1,6 +1,7 @@
 import React from 'react';
 import Pagination from './Pagination';
 import Status from './../../../features/status/index';
+import { CiMail } from 'react-icons/ci';
 
 interface TableProps {
   columns: any;
@@ -50,22 +51,31 @@ const Table = ({
               </thead>
               <tbody className='overflow-auto scrollbar-hidden'>
                 {currentTableData.map((cell: any, index: any) => {
-                  const { id, img, status }: any = cell;
+                  const { campaign, status }: any = cell;
                   return (
                     <tr
                       key={index}
-                      className={`whitespace-nowrap font-semibold text-sm border border-grey rounded`}
+                      className={`whitespace-nowrap font-semibold text-sm  rounded`}
                     >
-                      <td className='text-sm py-3 text-left text-black pl-4'>
-                        {id}
+                      <td className='text-sm py-5 text-left text-black flex flex-row'>
+                        <CiMail color='#16962B' size={24} className='mr-2' />
+                        <div>
+                          <p>
+                        {campaign}
+                          </p>
+<p className='text-[#8c8c8c] text-sm font-extralight mt-2'>Untitled campaign</p>
+                        </div>
                       </td>
-                      <td className='pr-6 py-3 text-grey'>{img}</td>
+                      <td
+                        className={`rounded-[8px] max-w-min text-sm
+                          pr-6 py-2 my-2`}
+                      >
+                        {Status(status)}
+                      </td>
                       {Object.entries(cell).map(
                         ([key, value]: [key: string, value: any]) => {
-                          return key === 'img' ||
-                            key === 'id' ||
-                            key === 'status' ||
-                            key === 'info' ? null : (
+                          return key === 'campaign' ||
+                            key === 'status' ? null : (
                             <td className='pr-6 py-3 text-grey' key={key}>
                               {Array.isArray(value)
                                 ? value.map((each) => {
@@ -80,15 +90,7 @@ const Table = ({
                           );
                         }
                       )}
-                      <td
-                        className={`rounded-[8px] max-w-min text-sm
-                          pr-6 py-2 my-2`}
-                      >
-                        {Status(status)}
-                      </td>
-                      <td className='pr-6 py-3 text-green underline'>
-                        View details
-                      </td>
+                      
                     </tr>
                   );
                 })}
