@@ -1,6 +1,20 @@
 import { ACTIONS } from "./action";
 
-const reducers = (state: {}, action: any) => {
+type Stateful = {
+  notify?: {};
+  auth?: {};
+  cart?: [];
+  modal?: {};
+  orders?: [];
+  users?: [];
+  categories?: [];
+};
+type AppAction = {
+  type: string;
+  payload: () => any;
+};
+const reducers = (state: Stateful, action: AppAction) => {
+  // console.log(action.type, action.payload);
   switch (action.type) {
     case ACTIONS.NOTIFY:
       return { ...state, notify: action.payload };

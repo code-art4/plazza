@@ -1,6 +1,6 @@
-import { createContext, useReducer, useEffect, useState, FC } from "react";
+import { createContext, useReducer, Dispatch, FC, SetStateAction } from "react";
 import reducers from "./reducer";
-interface Stateful {
+type Stateful = {
   notify?: {};
   auth?: {};
   cart?: [];
@@ -8,24 +8,31 @@ interface Stateful {
   orders?: [];
   users?: [];
   categories?: [];
-}
-
-const initalState = {
-  notify: {},
-  auth: {},
-  cart: [],
-  modal: {},
-  orders: [],
-  users: [],
-  categories: [],
 };
+
+interface APPStructure {
+  state: Stateful;
+  dispatch: (state: Stateful) => void;
+}
+const initalState = {
+  state: {
+    notify: {},
+    auth: {},
+    cart: [],
+    modal: {},
+    orders: [],
+    users: [],
+    categories: [],
+  },
+  dispatch: (state: Stateful) => {},
+} as APPStructure;
 
 interface Props {
   children: React.ReactNode;
 }
-export const DataContext = createContext({});
+export const DataContext = createContext<any>(initalState);
 export const DataProvider: FC<Props> = ({ children }) => {
-  const [state, dispatch] = useReducer(reducers, initalState);
+  const [state, dispatch] = useReducer<any>(reducers, initalState);
 
   return (
     <DataContext.Provider value={{ state, dispatch }}>
