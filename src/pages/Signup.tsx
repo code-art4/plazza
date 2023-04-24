@@ -62,6 +62,7 @@ const Signup = () => {
         return dispatch({ type: "NOTIFY", payload: {} });
       }, 3000);
     }
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
     console.log("hit", userData, checked);
   };
   return (
