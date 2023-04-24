@@ -6,7 +6,6 @@ import Toasty from "./Toast";
 const Notify = () => {
   const { state, dispatch } = useContext(DataContext);
   const { notify } = state;
-  console.log(notify, state);
   // const [timer, setTimer] = useState(false);
   // const updateNotify = () => {
   //   setTimeout(() => {
@@ -15,7 +14,7 @@ const Notify = () => {
   // };
   // updateNotify();
   return (
-    <>
+    <div>
       {notify?.loading && <Grow />}
       {notify?.error && (
         <Toasty
@@ -24,7 +23,6 @@ const Notify = () => {
           bgColor="bg-danger"
         />
       )}
-      {console.log("fin")}
       {notify?.success && (
         <Toasty
           msg={{ msg: notify.success, title: "OK" }}
@@ -32,7 +30,7 @@ const Notify = () => {
           bgColor="bg-success"
         />
       )}
-    </>
+    </div>
   );
 };
 

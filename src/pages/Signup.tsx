@@ -5,6 +5,8 @@ import AuthLayout from "../features/auth";
 import SignupSelect from "../features/signup/Select";
 import { DataContext } from "../store/globalState";
 import valid from "../utils/valid";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Signup = () => {
   const intialData = {
@@ -18,6 +20,7 @@ const Signup = () => {
     checkBox: false,
   };
   const { state, dispatch } = useContext(DataContext);
+  const { users } = state;
   const [userData, setUserData] = useState(intialData);
   const navigate = useNavigate();
 
@@ -25,7 +28,7 @@ const Signup = () => {
   const handleInput = (e: any) => {
     const { name, value } = e.target;
     setUserData({ ...userData, [name]: value });
-    dispatch({ type: "NOTIFY", payload: {} });
+    // dispatch({ type: "NOTIFY", payload: {} });
   };
 
   // handleSelect
@@ -36,13 +39,20 @@ const Signup = () => {
   };
   // checkbox
   const [isChecked, setIsChecked] = useState(false);
-  const checkHandler = () => {
-    setIsChecked(!isChecked);
-    setUserData({ ...userData, checkBox: isChecked });
-  };
+  // const checkHandler = (e: any) => {
+  //   console.log(e.target.checked, "t");
+  //   let val = e.target.value;
+  //   console.log(val, "b");
+  //   // const a = setIsChecked(val);
+  //   // console.log(a, "a", val);
+
+  //   // setUserData({ ...userData, checkBox: isChecked });
+  // };
+
   // handlesubmit
-  const handleSubmit = (e: any) => {
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
+    setUserData({ ...userData, checkBox: isChecked, selected: choice });
     const {
       email,
       confirmPassword,
@@ -54,16 +64,47 @@ const Signup = () => {
     } = userData;
     const checked = valid(firstName, email, confirmPassword, password);
     if (checked) {
-      console.log("entered");
       dispatch({ type: "NOTIFY", payload: { error: checked } });
-      console.log("out");
+
+      return setTimeout(() => {
+        return dispatch({ type: "NOTIFY", payload: {} });
+      }, 3000);
+    }
+    // console.log(checkBox, selected, checkBox);
+    if (otp == "" || checkBox == false || selected == "") {
+      dispatch({
+        type: "NOTIFY",
+        payload: { error: "filed(s) cannot be empty" },
+      });
 
       return setTimeout(() => {
         return dispatch({ type: "NOTIFY", payload: {} });
       }, 3000);
     }
     dispatch({ type: "NOTIFY", payload: { loading: true } });
-    console.log("hit", userData, checked);
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/");
+        dispatch({ type: "NOTIFY", payload: { ...state, users: [user] } });
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        dispatch({
+          type: "NOTIFY",
+          payload: { error: errorMessage },
+        });
+        setTimeout(() => {
+          return dispatch({ type: "NOTIFY", payload: {} });
+        }, 2500);
+        console.log(errorCode, errorMessage);
+        // ..
+      });
+    dispatch({ type: "NOTIFY", payload: { loading: false } });
   };
   return (
     <AuthLayout>
@@ -120,7 +161,10 @@ const Signup = () => {
           />
 
           <div>
-            <Checkbox checked={isChecked} onChange={() => checkHandler()}>
+            <Checkbox
+              checked={isChecked}
+              onChange={() => setIsChecked(!isChecked)}
+            >
               <span className="text-grey">
                 I agree with the{" "}
                 <span className="text-green">terms and conditions</span>

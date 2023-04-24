@@ -4,7 +4,7 @@ interface CheckboxProps {
   label?: string;
   children?: React.ReactNode;
   checked?: boolean;
-  onChange?: () => void;
+  onChange?: (e: any) => void;
 }
 
 const Checkbox = ({ label, children, checked, onChange }: CheckboxProps) => {
