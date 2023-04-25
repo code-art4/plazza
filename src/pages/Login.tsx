@@ -5,13 +5,18 @@ import Separator from "../features/login/separator";
 import AuthLayout from "../features/auth";
 import GoogleSvg from "../assets/google.svg";
 import { DataContext } from "../store/globalState";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
 import { auth } from "../../firebase";
 
 const Login = () => {
   const { state, dispatch } = useContext(DataContext);
   const initialState = { email: "", password: "", checkBox: false };
   const navigate = useNavigate();
+  const provider = new GoogleAuthProvider();
   const [userData, setUserData] = useState(initialState);
 
   const [isChecked, setIsChecked] = useState(false);
@@ -73,6 +78,48 @@ const Login = () => {
       });
     dispatch({ type: "NOTIFY", payload: { loading: false } });
   };
+
+  const signInwithGoogle = async (e: any) => {
+    e.preventDefault();
+    dispatch({ type: "NOTIFY", payload: { loading: true } });
+    await signInWithPopup(auth, provider)
+      .then((result) => {
+        // Signed in
+        const user: any = result.user;
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const { stsTokenManager, ...other } = user;
+        const { accessToken, refreshToken } = stsTokenManager;
+        console.log(result);
+        const { uid } = other;
+        const users = { uid, accessToken,refreshToken };
+        dispatch({
+          type: "ADD_USERS",
+          payload: { ...state.users, users },
+        });
+        navigate("/");
+
+        localStorage.setItem("user", JSON.stringify(users));
+        dispatch({ type: "NOTIFY", payload: { loading: false } });
+
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        dispatch({
+          type: "NOTIFY",
+          payload: { error: errorMessage },
+        });
+        setTimeout(() => {
+          return dispatch({ type: "NOTIFY", payload: {} });
+        }, 2500);
+        console.log(errorCode, errorMessage);
+        dispatch({ type: "NOTIFY", payload: { loading: false } });
+
+        // ..
+      });
+    dispatch({ type: "NOTIFY", payload: { loading: false } });
+  };
   return (
     <AuthLayout>
       <div className="flex flex-col gap-y-6">
@@ -109,7 +156,12 @@ const Login = () => {
         <div className="mt-8">
           <Separator />
 
-          <div className="mt-5">
+          <div
+            className="mt-5"
+            onClick={(e) => {
+              signInwithGoogle(e);
+            }}
+          >
             <Button
               type="secondary"
               className="flex justify-center items-center gap-x-2"

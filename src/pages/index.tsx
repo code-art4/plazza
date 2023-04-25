@@ -7,6 +7,7 @@ import Ad2 from "../assets/image/ad-2.png";
 import Deal1 from "../assets/image/deal-1.png";
 import Deal2 from "../assets/image/deal-2.png";
 import Deal3 from "../assets/image/deal-3.png";
+import Carousel from "react-bootstrap/Carousel";
 
 const LandingPage = () => {
   return (
@@ -24,10 +25,32 @@ const LandingPage = () => {
           <li> Home & Office</li>
           <li> Home & Kitchen </li>
         </ul>
-
-        <div className="object-cover mt-8">
-          <img src={LandingPageImg} className="object-cover w-full h-auto" />
-        </div>
+        <Carousel>
+          <Carousel.Item>
+            <div className="object-cover mt-8">
+              <img
+                src={LandingPageImg}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="object-cover mt-8">
+              <img
+                src={LandingPageImg}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+          </Carousel.Item>
+          <Carousel.Item>
+            <div className="object-cover mt-8">
+              <img
+                src={LandingPageImg}
+                className="object-cover w-full h-auto"
+              />
+            </div>
+          </Carousel.Item>
+        </Carousel>
 
         <div className="flex gap-x-12 justify-between mt-12 px-12">
           <div className="flex flex-col gap-y-[5rem] w-1/2">
