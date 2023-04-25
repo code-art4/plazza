@@ -7,17 +7,17 @@ import ChatSVG from "../../assets/chat.svg";
 import NotificationSVG from "../../assets/notification.svg";
 import HelpSVG from "../../assets/help.svg";
 import Profile from "../../assets/image/profile.png";
-
 import styles from "./index.module.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { DataContext } from "../../store/globalState";
 
 const noUser = () => {
   return (
     <div className="flex gap-x-2 justify-center items-center">
-      <Link to="signup">
+      <Link to="signup" className="p-0 m-0">
         <Button className={`${styles["search-btn"]}`}>Register</Button>
       </Link>
-      <Link to="login">
+      <Link to="login" className="p-0 m-0">
         <Button className={styles["search-btn"]}>login</Button>
       </Link>
     </div>
@@ -29,7 +29,7 @@ const loggedUser = () => {
     <div className={styles["right-nav"]}>
       <div className={styles["delivery-icon"]}>
         <CiDeliveryTruck size="1.5rem" />
-        <p>Logistics</p>
+        <p className="mb-0">Logistics</p>
       </div>
       <div className={styles["icons-container"]}>
         <img src={NigeriaSVG} className={styles.icon} />
@@ -46,7 +46,8 @@ const loggedUser = () => {
 };
 
 const Nav = () => {
-  const [islogged, setisLogged] = useState(false);
+  const { state, dispatch } = useContext(DataContext);
+  const { users } = state;
   return (
     <nav className={styles["nav-container"]}>
       <div className={styles["dummy-logo"]}></div>
@@ -62,7 +63,9 @@ const Nav = () => {
           <Button className={styles["search-btn"]}>Search</Button>
         </div>
       </div>
-      {islogged ? loggedUser() : noUser()}
+      <div className="p-0 m-0">
+        {users && users.length !== 0 ? loggedUser() : noUser()}
+      </div>
     </nav>
   );
 };

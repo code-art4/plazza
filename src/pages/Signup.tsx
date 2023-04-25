@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 import { useState, useContext } from "react";
 import { Input, Button, Checkbox } from "../components/ui";
 import AuthLayout from "../features/auth";
@@ -20,7 +20,7 @@ const Signup = () => {
     checkBox: false,
   };
   const { state, dispatch } = useContext(DataContext);
-  const { users } = state;
+  // const { users } = state;
   const [userData, setUserData] = useState(intialData);
   const navigate = useNavigate();
 
@@ -58,6 +58,7 @@ const Signup = () => {
       confirmPassword,
       password,
       firstName,
+      lastName,
       otp,
       selected,
       checkBox,
@@ -85,10 +86,31 @@ const Signup = () => {
     await createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
-        const user = userCredential.user;
-        console.log(user);
+        const user: any = userCredential.user;
+        const { stsTokenManager, ...other } = user;
+        const { accessToken, refreshToken } = stsTokenManager;
+        const { uid } = other;
+        const users = {
+          accessToken,
+          refreshToken,
+          role: selected,
+          uid,
+          loggedInUser: { email, firstName, lastName, otp },
+        };
+        dispatch({
+          type: "ADD_USERS",
+          payload: [
+            {
+              ...state.users,
+              users,
+            },
+          ],
+        });
         navigate("/");
-        dispatch({ type: "NOTIFY", payload: { ...state, users: [user] } });
+
+        localStorage.setItem("user", JSON.stringify(users));
+        dispatch({ type: "NOTIFY", payload: { loading: false } });
+
         // ...
       })
       .catch((error) => {
@@ -174,16 +196,15 @@ const Signup = () => {
             <div className="mt-5" onClick={(e) => handleSubmit(e)}>
               <Button>Signup</Button>
             </div>
-
-            <p className="flex items-center justify-center text-[#787878] mt-3">
-              Already have an account ?
+            <div className="flex items-center justify-center mt-3 text-[#787878]">
+              <p>Already have an account ?</p>
               <p
                 className="text-green text-medium ml-2 cursor-pointer"
                 onClick={() => navigate("/login")}
               >
                 Login Here
               </p>
-            </p>
+            </div>
           </div>
         </div>
       </div>

@@ -1,4 +1,4 @@
-import { createContext, useReducer, Dispatch, FC, SetStateAction } from "react";
+import { createContext, useReducer, useEffect, FC, useState } from "react";
 import reducers from "./reducer";
 type Stateful = {
   notify?: {};
@@ -12,7 +12,7 @@ type Stateful = {
 
 interface APPStructure {
   state: Stateful;
-  dispatch: (state: Stateful) => void;
+  dispatch: (state: Stateful) => any;
 }
 const initalState = {
   state: {
@@ -33,6 +33,21 @@ interface Props {
 export const DataContext = createContext<any>(initalState);
 export const DataProvider: FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer<any>(reducers, initalState);
+  // useEffect(() => {
+  //   const loggedInUser = localStorage.getItem("user");
+  //   if (loggedInUser) {
+  //     const foundUser = JSON.parse(loggedInUser);
+  //     dispatch({
+  //       type: "ADD_USERS",
+  //       payload: [
+  //         {
+  //           ...state,
+  //           foundUser,
+  //         },
+  //       ],
+  //     });
+  //   }
+  // }, []);
 
   return (
     <DataContext.Provider value={{ state, dispatch }}>

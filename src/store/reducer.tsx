@@ -11,7 +11,7 @@ type Stateful = {
 };
 type AppAction = {
   type: string;
-  payload: () => any;
+  payload: (state: Stateful) => {};
 };
 const reducers = (state: Stateful, action: AppAction) => {
   // console.log(action.type, action.payload);
