@@ -9,11 +9,22 @@ export const ACTIONS = {
 };
 
 export const addToCart = (product: any, cart: any) => {
-  if (product.inStock === 0)
+  if (product.length == 0) {
+    //  setTimeout(() => {
+    //   return dispatch({ type: "NOTIFY", payload: {} });
+    // }, 3000);
+
     return {
       type: "NOTIFY",
       payload: { error: "This product is out of stock." },
     };
+  }
+  if (product.inStock === 0) {
+    return {
+      type: "NOTIFY",
+      payload: { error: "This product is out of stock." },
+    };
+  }
 
   const check = cart?.every((item: any) => {
     return item._id !== product._id;

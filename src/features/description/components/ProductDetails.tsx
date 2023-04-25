@@ -1,10 +1,14 @@
+import {useContext, useState} from 'react'
 import Colors from "./Colors";
 import { BiMinus } from "react-icons/bi";
 import { RiAddFill } from "react-icons/ri";
 import { Button } from "../../../components/ui";
-import { useState } from "react";
+import { addToCart } from "../../../store/action";
+import { DataContext } from "../../../store/globalState";
 
 const ProductDetails = () => {
+  const { state, dispatch } = useContext(DataContext);
+
   const [count, setCount] = useState(0);
   const increase = () => {
     setCount(count + 1);
@@ -55,8 +59,9 @@ const ProductDetails = () => {
               onClick={() => increase()}
             />
           </div>
-
-          <Button className="w-max px-7 py-2.5">Add to cart</Button>
+          <div onClick={() => dispatch(addToCart([], []))}>
+            <Button className="w-max px-7 py-2.5">Add to cart</Button>
+          </div>
         </div>
       </div>
       <div className="mt-5">
