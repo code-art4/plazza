@@ -4,9 +4,14 @@ import UserProfileIMG from '../../assets/image/user-profile.png';
 import Pic1 from '../../assets/image/post-1.png';
 import Pic2 from '../../assets/image/post-2.png';
 
-const Chat = () => {
+interface ChatProps {
+  className?: string;
+  activeChat?: any;
+}
+
+const Chat = ({ className, activeChat }: ChatProps) => {
   return (
-    <div className='mt-[4.6rem]'>
+    <div className={`mt-[4.6rem] ${className}`}>
       <div className='w-full flex items-center px-6 pb-4 border-b border-b-[#F5F5F5]'>
         <div className='flex items-center'>
           <div className='relative w-[3.2rem] h-[3.2rem]'>
@@ -18,8 +23,8 @@ const Chat = () => {
           </div>
         </div>
         <div className='ml-4'>
-          <p className='text-lg font-medium'>Daniel Plazzar</p>
-          <p className='text-grey -mt-1'>Daniel Plazzar</p>
+          <p className='text-lg font-medium'>{activeChat?.name}</p>
+          <p className='text-grey -mt-1'>{activeChat?.alt}</p>
         </div>
 
         <div className='ml-auto flex items-center gap-x-5'>
@@ -45,8 +50,8 @@ const Chat = () => {
 
         <div className='flex flex-row-reverse items-start ml-auto max-w-[60%] '>
           <img src={UserProfileIMG} />
-          <div className='mr-3 bg-green rounded-full text-white pr-4 py-2 flex items-center'>
-            <p className='w-[70%] pl-6'>
+          <div className='mr-3 bg-green rounded-full text-white pr-12 pl-4 py-2 flex items-center'>
+            <p className='w-[80%] pl-6'>
               Orders have been resent. A little patience Ma.
             </p>
             <p className='flex items-center gap-x-2 ml-auto w-[20%] self-end text-sm'>
@@ -62,16 +67,16 @@ const Chat = () => {
           <div className='flex items-start max-w-[60%]'>
             <img src={UserProfileIMG} />
             <div className='ml-3'>
-              <div className='bg-[#D8F6DD] rounded-full pr-4 py-2 flex items-center'>
-                <p className='w-[70%] pl-6'>
+              <div className='bg-[#D8F6DD] rounded-full pl-4 pr-12 py-2 flex items-center'>
+                <p className='w-[80%] pl-6'>
                   Please kindly replace my order thanks
                 </p>
                 <p className='flex items-center gap-x-2 ml-auto w-[20%] self-end text-sm'>
                   09:30am
                 </p>
               </div>
-              <div className='bg-[#D8F6DD] rounded-full pr-4 py-2 flex items-center mt-1'>
-                <p className='w-[70%] pl-6'>
+              <div className='bg-[#D8F6DD] rounded-full pl-4 pr-12 py-4 flex items-center mt-1'>
+                <p className='w-[80%] pl-6'>
                   I really enjoyed my experience with your guys. Your services
                   are top notch
                 </p>
@@ -104,16 +109,16 @@ const Chat = () => {
           <div className='flex items-start max-w-[60%]'>
             <img src={UserProfileIMG} />
             <div className='ml-3'>
-              <div className='bg-[#D8F6DD] rounded-full pr-4 py-2 flex items-center'>
-                <p className='w-[70%] pl-6'>
+              <div className='bg-[#D8F6DD] rounded-full pl-4 pr-12 py-2 flex items-center'>
+                <p className='w-[80%] pl-6'>
                   Please kindly replace my order thanks
                 </p>
                 <p className='flex items-center gap-x-2 ml-auto w-[20%] self-end text-sm'>
                   09:30am
                 </p>
               </div>
-              <div className='bg-[#D8F6DD] rounded-full pr-4 py-2 flex items-center mt-1'>
-                <p className='w-[70%] pl-6'>
+              <div className='bg-[#D8F6DD] rounded-full pl-4 pr-12 py-2 flex items-center mt-1'>
+                <p className='w-[80%] pl-6'>
                   I really enjoyed my experience with your guys. Your services
                   are top notch
                 </p>
@@ -123,10 +128,10 @@ const Chat = () => {
               </div>
             </div>
           </div>
-          <div className='flex flex-row-reverse items-start ml-auto max-w-[60%] mt-6'>
+          <div className='flex flex-row-reverse items-start ml-auto max-w-[60%] mt-6 mb-12'>
             <img src={UserProfileIMG} />
-            <div className='mr-3 bg-green rounded-full text-white pr-4 py-2 flex items-center'>
-              <p className='w-[70%] pl-6'>
+            <div className='mr-3 bg-green rounded-full text-white pr-12 pl-4 py-2 flex items-center'>
+              <p className='w-[80%] pl-6'>
                 Orders have been resent. A little patience Ma.
               </p>
               <p className='flex items-center gap-x-2 ml-auto w-[20%] self-end text-sm'>

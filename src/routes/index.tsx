@@ -20,6 +20,12 @@ import Details from '../pages/Order/Details';
 import Tracking from '../pages/Order/Tracking';
 import Refunds from '../pages/Refunds';
 import Payment from '../pages/Payment';
+import Help from '../pages/Help';
+import PlaceOrder from '../pages/Help/PlaceOrder';
+import Returns from '../pages/Help/Returns';
+import HelpPayment from './../pages/Help/Payment';
+import OrderCancelation from '../pages/Help/OrderCancelation';
+import TrackOrder from '../pages/Help/TrackOrder';
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -44,6 +50,12 @@ enum RoutePaths {
   Booking = '/booking',
   Tracking = '/track',
   Payment = '/payment',
+  Help = '/help',
+  PlaceOrder = '/help/place-order',
+  TrackOrder = '/help/track-order',
+  OrderCancelation = '/help/cancel-order',
+  Returns = '/help/returns',
+  HelpPayments = '/help/payments',
 }
 
 const PageRoutes = () => {
@@ -77,6 +89,15 @@ const PageRoutes = () => {
         <Route path={RoutePaths.Tracking} element={<Tracking />} />
         <Route path={RoutePaths.Refunds} element={<Refunds />} />
         <Route path={RoutePaths.Payment} element={<Payment />} />
+        <Route path={RoutePaths.Help} element={<Help />} />
+        <Route path={RoutePaths.PlaceOrder} element={<PlaceOrder />} />
+        <Route path={RoutePaths.TrackOrder} element={<TrackOrder />} />
+        <Route
+          path={RoutePaths.OrderCancelation}
+          element={<OrderCancelation />}
+        />
+        <Route path={RoutePaths.Returns} element={<Returns />} />
+        <Route path={RoutePaths.HelpPayments} element={<HelpPayment />} />
       </Routes>
     </>
   );

@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import AuthenticatedLayout from '../layout/AuthenticatedLayout';
 import UserProfile from '../assets/image/user-profile.png';
-import {
-  AiOutlineSearch,
-  AiOutlineMore,
-  AiOutlinePlus,
-  AiOutlineFolder,
-} from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineMore, AiOutlinePlus } from 'react-icons/ai';
 import { RxCaretDown, RxVideo } from 'react-icons/rx';
-import { HiOutlineDocument, HiOutlinePhone } from 'react-icons/hi';
+import {
+  HiOutlineDocument,
+  HiOutlineFolder,
+  HiOutlinePhotograph,
+} from 'react-icons/hi';
 import { Button, Input } from '../components/ui';
 import ChatProfile from '../features/chat/ChatProfile';
 import Chat from '../features/chat';
@@ -27,9 +26,10 @@ const ChatPage = () => {
       unreadMessages: 2,
     },
     {
-      name: 'Daniel Plazzar',
+      name: 'Plazzar Group',
+      type: 'group',
       id: 2,
-      alt: 'Daniel Plazzar',
+      alt: 'Plazzar Group',
       timeStamp: '09: 30 am',
       unreadMessages: 2,
     },
@@ -99,11 +99,14 @@ const ChatPage = () => {
   ];
 
   const [activeChat, setActiveChat] = useState(chatsList[0]);
+  console.log(activeChat);
 
   return (
     <AuthenticatedLayout topBar={false}>
       <div className='w-full flex'>
-        <div className='w-[40%]'>
+        <div
+          className={`${activeChat?.type === 'group' ? 'w-[30%]' : 'w-[40%]'}`}
+        >
           <header className='flex items-center w-full px-10'>
             <h3 className='text-2xl font-medium'>Chat</h3>
             <div className='ml-auto w-max flex items-center gap-x-3'>
@@ -143,110 +146,126 @@ const ChatPage = () => {
             </div>
           </main>
         </div>
-        <div className='w-[60%] relative max-h-screen mr-4 -mt-5'>
-          <TopNav />
-          <Chat />
-          <ChatBox />
+        <div
+          className={`${
+            activeChat?.type === 'group' ? 'w-[50%]' : 'w-[40%]'
+          } relative max-h-screen mr-4 -mt-5`}
+        >
+          <TopNav
+            className={`${activeChat?.type === 'group' ? 'w-[60%]' : ''}`}
+          />
+          <div className='fixed'>
+            <Chat
+              className={`${activeChat?.type === 'group' ? 'w-[80%]' : ''}`}
+              activeChat={activeChat}
+            />
+          </div>
+          <ChatBox
+            className={`${
+              activeChat?.type === 'group' ? '!w-[35%] right-[18%]' : ''
+            }`}
+          />
         </div>
 
-        {/* <div className='w-[20%] ml-auto mt-16'>
-          <div className='flex flex-col items-center -ml-[4rem] mb-7'>
-            <div className='flex mx-auto items-center w-max mb-5'>
-              <img src={UserProfile} className='-mr-8 scale-[120%] z-[1]' />
-              <img src={UserProfile} className='-mr-8 scale-[120%] z-[2]' />
-              <img src={UserProfile} className='-mr-8 scale-[120%] z-[1]' />
+        {activeChat?.type === 'group' ? (
+          <div className='w-[15%] ml-auto mt-16 fixed right-0'>
+            <div className='flex flex-col items-center -ml-[4rem] mb-7'>
+              <div className='flex mx-auto items-center w-max mb-5'>
+                <img src={UserProfile} className='-mr-8 scale-[120%] z-[1]' />
+                <img src={UserProfile} className='-mr-8 scale-[120%] z-[2]' />
+                <img src={UserProfile} className='-mr-8 scale-[120%] z-[1]' />
+              </div>
+              <p className='ml-7 font-medium -mt-2'> {activeChat?.name} </p>
             </div>
-            <p className='ml-7 font-medium -mt-2'> Plazzar Group </p>
-          </div>
 
-          <div className='pr-4'>
-            <span className='flex items-center justify-between font-medium'>
-              Members <RxCaretDown size='1.2rem' />
-            </span>
-
-            <div>
-              <span className='flex items-center mt-2 gap-x-4 text-green font-medium mb-5'>
-                {' '}
-                <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                  <AiOutlinePlus size='1.1rem' />
-                </div>
-                Add Members
+            <div className='pr-4'>
+              <span className='flex items-center justify-between font-medium'>
+                Members <RxCaretDown size='1.2rem' />
               </span>
 
-              <div className='flex items-center gap-x-3 mb-2'>
-                <img src={UserProfile} />
-                <span>You</span>
-              </div>
-              <div className='flex items-center gap-x-3 mb-2'>
-                <img src={UserProfile} />
-                <span>Susan</span>
-              </div>
-              <div className='flex items-center gap-x-3 mb-2'>
-                <img src={UserProfile} />
-                <span>Benson B.</span>
-              </div>
-              <div className='flex items-center gap-x-3 mb-2'>
-                <img src={UserProfile} />
-                <span>Nathaniel S.</span>
-              </div>
-            </div>
+              <div>
+                <span className='flex items-center mt-2 gap-x-4 text-green font-medium mb-5'>
+                  {' '}
+                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
+                    <AiOutlinePlus size='1.1rem' />
+                  </div>
+                  Add Members
+                </span>
 
-            <div className='mt-6'>
-              <span className='flex items-center justify-between font-medium mb-3'>
-                Attachments <RxCaretDown />
-              </span>
+                <div className='flex items-center gap-x-3 mb-2'>
+                  <img src={UserProfile} />
+                  <span>You</span>
+                </div>
+                <div className='flex items-center gap-x-3 mb-2'>
+                  <img src={UserProfile} />
+                  <span>Susan</span>
+                </div>
+                <div className='flex items-center gap-x-3 mb-2'>
+                  <img src={UserProfile} />
+                  <span>Benson B.</span>
+                </div>
+                <div className='flex items-center gap-x-3 mb-2'>
+                  <img src={UserProfile} />
+                  <span>Nathaniel S.</span>
+                </div>
+              </div>
 
-              <div className='mt-2'>
-                <div className='flex items-center gap-x-3 mb-4'>
-                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                    <HiOutlineDocument size='1.2rem' color='green' />
-                  </div>
-                  <div>
-                    <p className='font-medium'>Document</p>
-                    <p className='text-[#A5A5A5] text-sm'>129 Files - 375 MB</p>
-                  </div>
-                </div>
+              <div className='mt-6'>
+                <span className='flex items-center justify-between font-medium mb-3'>
+                  Attachments <RxCaretDown />
+                </span>
 
-                <div className='flex items-center gap-x-3 mb-4'>
-                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                    <HiOutlineDocument size='1.2rem' color='green' />
+                <div className='mt-2'>
+                  <div className='flex items-center gap-x-3 mb-4'>
+                    <div className='bg-[#E8F8EB] p-2 rounded-full'>
+                      <HiOutlineDocument size='1.2rem' color='green' />
+                    </div>
+                    <div>
+                      <p className='font-medium'>Document</p>
+                      <p className='text-[#A5A5A5] text-sm'>
+                        129 Files - 375 MB
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className='font-medium'>Photo</p>
-                    <p className='text-[#A5A5A5] text-sm'>129 Files - 375 MB</p>
+
+                  <div className='flex items-center gap-x-3 mb-4'>
+                    <div className='bg-[#E8F8EB] p-2 rounded-full'>
+                      <HiOutlinePhotograph size='1.2rem' color='green' />
+                    </div>
+                    <div>
+                      <p className='font-medium'>Photo</p>
+                      <p className='text-[#A5A5A5] text-sm'>
+                        129 Files - 375 MB
+                      </p>
+                    </div>
                   </div>
-                </div>
-                <div className='flex items-center gap-x-3 mb-4'>
-                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                    <HiOutlinePhone size='1.2rem' color='green' />
+                  <div className='flex items-center gap-x-3 mb-4'>
+                    <div className='bg-[#E8F8EB] p-2 rounded-full'>
+                      <RxVideo size='1.2rem' color='green' />
+                    </div>
+                    <div>
+                      <p className='font-medium'>Videos</p>
+                      <p className='text-[#A5A5A5] text-sm'>
+                        129 Files - 375 MB
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className='font-medium'>Videos</p>
-                    <p className='text-[#A5A5A5] text-sm'>129 Files - 375 MB</p>
-                  </div>
-                </div>
-                <div className='flex items-center gap-x-3 mb-4'>
-                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                    <RxVideo size='1.2rem' color='green' />
-                  </div>
-                  <div>
-                    <p className='font-medium'>Other Files</p>
-                    <p className='text-[#A5A5A5] text-sm'>129 Files - 375 MB</p>
-                  </div>
-                </div>
-                <div className='flex items-center gap-x-3 mb-4'>
-                  <div className='bg-[#E8F8EB] p-2 rounded-full'>
-                    <AiOutlineFolder size='1.2rem' color='green' />
-                  </div>
-                  <div>
-                    <p>Document</p>
-                    <p>129 Files - 375 MB</p>
+                  <div className='flex items-center gap-x-3 mb-4'>
+                    <div className='bg-[#E8F8EB] p-2 rounded-full'>
+                      <HiOutlineFolder size='1.2rem' color='green' />
+                    </div>
+                    <div>
+                      <p className='font-medium'>Other Files</p>
+                      <p className='text-[#A5A5A5] text-sm'>
+                        129 Files - 375 MB
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div> */}
+        ) : null}
       </div>
     </AuthenticatedLayout>
   );

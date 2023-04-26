@@ -23,7 +23,7 @@ const Input = ({ placeholder, id, name, type, className }: InputProps) => {
         }
         id={id}
         name={name}
-        className={className}
+        className={`${className} outline-none`}
         placeholder={placeholder}
         required
       />

@@ -13,12 +13,12 @@ const ChatBox = ({
     <div
       className={`bg-white flex items-center fixed bottom-12 shadow w-[42%] right-9 rounded-l-full overflow-hidden ${className}`}
     >
-      <div className='flex items-center bg-[#F2F0F0] pl-4'>
+      <div className='flex items-center bg-[#F2F0F0] pl-4 w-[80%]'>
         <img src={Emoji} className='w-5 h-5' />
         <input
           type='text'
           placeholder='Type message'
-          className={`ml-5 w-[32rem] outline-none pl-3 bg-[#F2F0F0] py-3 ${inputClassName}`}
+          className={`ml-5 w-full outline-none pl-3 bg-[#F2F0F0] py-3 ${inputClassName}`}
         />
       </div>
 
