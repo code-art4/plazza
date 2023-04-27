@@ -10,15 +10,19 @@
   },
   "dependencies": {
     "@faker-js/faker": "^7.6.0",
+    "@popperjs/core": "^2.11.7",
     "@tanstack/react-table": "^8.8.5",
     "apexcharts": "^3.38.0",
+    "bootstrap": "^5.2.3",
     "chart.js": "^4.2.1",
     "classnames": "^2.3.2",
     "faker": "^6.6.6",
     "faker-js": "^1.0.0",
+    "firebase": "^9.20.0",
     "leaflet": "^1.9.3",
     "react": "^18.2.0",
     "react-apexcharts": "^1.4.0",
+    "react-bootstrap": "^2.7.4",
     "react-chartjs-2": "^5.2.0",
     "react-charts": "^3.0.0-beta.54",
     "react-data-table-component": "^7.5.3",
@@ -29,7 +33,8 @@
     "react-router-dom": "^6.10.0",
     "react-select": "^5.7.2",
     "react-table": "^7.8.0",
-    "react-use": "^17.4.0"
+    "react-use": "^17.4.0",
+    "sass": "^1.62.0"
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.3",

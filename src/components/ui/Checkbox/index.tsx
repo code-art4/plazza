@@ -1,4 +1,4 @@
-import styles from './index.module.css';
+import styles from "./index.module.css";
 
 interface CheckboxProps {
   label?: string;
@@ -7,9 +7,10 @@ interface CheckboxProps {
   onChange?: (e: any) => void;
 }
 
-const Checkbox = ({ label, children }: CheckboxProps) => {
+const Checkbox = ({ label, children, checked, onChange }: CheckboxProps) => {
   return (
-    <>
+
+<>
       <label htmlFor={label} className={styles['checkbox-container']}>
         <input
           type='checkbox'
@@ -24,6 +25,7 @@ const Checkbox = ({ label, children }: CheckboxProps) => {
         {!children ? <span className='text-grey'>{label}</span> : children}
       </label>
     </>
+
   );
 };
 
