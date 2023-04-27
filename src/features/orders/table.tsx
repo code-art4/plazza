@@ -13,7 +13,7 @@ const Table = ({ title, data }: TableProps) => {
         <tbody>
           {data.map((item: any, index: number) => {
             return (
-              <tr>
+              <tr key={index}>
                 <td className='font-semibold py-2 border-none'>{item.key}:</td>
                 <td
                   className={`px-4 py-2 border-none text-gray-500 text-grey ${

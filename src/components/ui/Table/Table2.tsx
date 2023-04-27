@@ -40,6 +40,7 @@ const Table = ({
                         className={`text-sm font-medium pr-6 ${
                           columnColor ? columnColor : 'text-gray-900'
                         } py-4 text-left whitespace-nowrap`}
+                        key={name}
                       >
                         {name}
                       </th>
@@ -69,7 +70,9 @@ const Table = ({
                               {Array.isArray(value)
                                 ? value.map((each) => {
                                     return (
-                                      <span className='block'>{each}</span>
+                                      <span className='block' key={each}>
+                                        {each}
+                                      </span>
                                     );
                                   })
                                 : value}

@@ -9,18 +9,21 @@ interface CheckboxProps {
 
 const Checkbox = ({ label, children, checked, onChange }: CheckboxProps) => {
   return (
-    <label htmlFor={label} className={styles["checkbox-container"]}>
-      <input
-        type="checkbox"
-        id="myCheckbox"
-        checked={checked}
-        onChange={onChange}
-        className={styles["checkbox-input"]}
-      />
-      <span className={styles["checkmark"]}></span>
+  <>
+      <label htmlFor={label} className={styles['checkbox-container']}>
+        <input
+          type='checkbox'
+          id={label}
+          name={label}
+          checked={checked}
+          onChange={onChange}
+          className={styles['checkbox-input']}
+        />
+        <span className={styles['checkmark']}></span>
 
-      {!children ? <span className="text-grey">{label}</span> : children}
-    </label>
+        {!children ? <span className='text-grey'>{label}</span> : children}
+      </label>
+    </>
   );
 };
 

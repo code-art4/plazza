@@ -8,6 +8,7 @@ const Colors = () => {
           style={{
             backgroundColor: color,
           }}
+          key={color}
         ></div>
       ))}
     </div>

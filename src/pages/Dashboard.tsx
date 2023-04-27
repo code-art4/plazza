@@ -1,6 +1,5 @@
 import React from 'react';
 import { BiCaretUp } from 'react-icons/bi';
-import { Chart } from 'react-charts';
 import AuthenticatedLayout from '../layout/AuthenticatedLayout';
 import GreenChart from '../assets/image/green-chart.png';
 import RedChart from '../assets/image/red-chart.png';
