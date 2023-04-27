@@ -9,8 +9,7 @@ interface CheckboxProps {
 
 const Checkbox = ({ label, children, checked, onChange }: CheckboxProps) => {
   return (
-
-<>
+  <>
       <label htmlFor={label} className={styles['checkbox-container']}>
         <input
           type='checkbox'
@@ -25,7 +24,6 @@ const Checkbox = ({ label, children, checked, onChange }: CheckboxProps) => {
         {!children ? <span className='text-grey'>{label}</span> : children}
       </label>
     </>
-
   );
 };
 
