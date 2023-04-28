@@ -148,7 +148,7 @@ const Reviews = () => {
         <div className='mt-4 ml-8'>
           <h4 className='text-xl font-semibold mb-4'>Reviews (18)</h4>
 
-          <div className='flex flex-col gap-y-6 items-center mb-8'>
+          <div className='flex flex-col gap-y-6 items-start mb-8'>
             {reviews?.map((review, index) => {
               return (
                 <ReviewCard key={review.name} {...review} first={index === 0} />
