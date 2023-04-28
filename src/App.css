@@ -78,3 +78,16 @@ audio::-webkit-media-controls-panel {
   bottom: 52px;
   right: 70px;
 }
+
+.custom-range {
+  border-radius: 8px;
+  height: 9px;
+  width: 400px;
+  outline: none;
+  transition: background 450ms ease-in;
+  -webkit-appearance: none;
+}
+
+.custom-range::-webkit-slider-thumb {
+  display: none;
+}
