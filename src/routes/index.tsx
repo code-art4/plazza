@@ -26,6 +26,7 @@ import Returns from '../pages/Help/Returns';
 import HelpPayment from './../pages/Help/Payment';
 import OrderCancelation from '../pages/Help/OrderCancelation';
 import TrackOrder from '../pages/Help/TrackOrder';
+import Reviews from '../pages/Reviews'
 
 // Define the paths as enums to avoid typos
 enum RoutePaths {
@@ -56,6 +57,7 @@ enum RoutePaths {
   OrderCancelation = '/help/cancel-order',
   Returns = '/help/returns',
   HelpPayments = '/help/payments',
+  Reviews = '/reviews'
 }
 
 const PageRoutes = () => {
@@ -98,6 +100,7 @@ const PageRoutes = () => {
         />
         <Route path={RoutePaths.Returns} element={<Returns />} />
         <Route path={RoutePaths.HelpPayments} element={<HelpPayment />} />
+        <Route path={RoutePaths.Reviews} element={<Reviews />} />
       </Routes>
     </>
   );
