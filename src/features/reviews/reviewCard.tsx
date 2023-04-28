@@ -23,7 +23,7 @@ const ReviewCard = ({
     <div
       className='rounded-lg px-4 py-3 flex items-start'
       style={{
-        border: first ? '1px solid #16962B' : '',
+        border: first ? '1px solid #16962B' : '1px solid #CCCCCC',
       }}
     >
       <img src={img} className='w-11 h-11 object-cover mr-3' />
